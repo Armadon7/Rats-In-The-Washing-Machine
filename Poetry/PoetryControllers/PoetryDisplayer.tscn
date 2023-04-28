@@ -1,0 +1,123 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsevqrdca3hsf"]
+
+[ext_resource type="Script" path="res://Poetry/PoetryControllers/TextEditScript.gd" id="1_pdvue"]
+[ext_resource type="Theme" uid="uid://cncdqnf2sif6w" path="res://ThemesAndFonts/Themes/MenuBaseTheme.tres" id="1_yykft"]
+[ext_resource type="Texture2D" uid="uid://btooj61o4a15a" path="res://Assets/Particles/Star.png" id="2_n1dad"]
+
+[sub_resource type="Curve" id="Curve_bww43"]
+_data = [Vector2(0.021978, 0.172727), 0.0, 0.0, 0, 0, Vector2(0.56044, 0.954545), 0.0, 0.0, 0, 0, Vector2(1, 0.109091), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_ivbdm"]
+resource_local_to_scene = true
+offsets = PackedFloat32Array(0.225166, 0.350993, 0.516556, 0.701987, 1)
+colors = PackedColorArray(1.92523e-07, 0.863324, 0.954049, 1, 0.85098, 0.968627, 0, 1, 1, 0.640638, 0.946779, 1, 0.85098, 1, 0, 1, 1.92523e-07, 0.863324, 0.954049, 1)
+
+[sub_resource type="Gradient" id="Gradient_mkbls"]
+resource_local_to_scene = true
+offsets = PackedFloat32Array(0, 0.350993, 0.496689, 0.649007, 0.801324)
+colors = PackedColorArray(1, 0.640638, 0.946779, 1, 0.85098, 0.968627, 0, 1, 1.92523e-07, 0.863324, 0.954049, 1, 1.92523e-07, 0.863324, 0.954049, 1, 0.85098, 1, 0, 1)
+
+[node name="PoetryWindow" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yykft")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="VMarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="HBoxContainer/VBoxContainer/VMarginContainer"]
+position = Vector2(209, 0)
+amount = 96
+lifetime = 3.0
+randomness = 0.79
+emission_shape = 3
+emission_rect_extents = Vector2(1080, 10)
+gravity = Vector2(0, 260)
+scale_amount_min = 15.1
+scale_amount_max = 45.4
+scale_amount_curve = SubResource("Curve_bww43")
+split_scale = true
+scale_curve_x = null
+scale_curve_y = null
+color_ramp = SubResource("Gradient_ivbdm")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="HBoxContainer/VBoxContainer/VMarginContainer"]
+position = Vector2(209, 0)
+amount = 24
+lifetime = 3.0
+randomness = 0.79
+texture = ExtResource("2_n1dad")
+emission_shape = 3
+emission_rect_extents = Vector2(1080, 10)
+gravity = Vector2(0, 260)
+angular_velocity_min = -178.29
+angular_velocity_max = 178.29
+scale_amount_min = 0.05
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_bww43")
+split_scale = true
+scale_curve_x = null
+scale_curve_y = null
+color_ramp = SubResource("Gradient_mkbls")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ExitEraseButton" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Exit Erase All Changes"
+
+[node name="TextEdit" type="TextEdit" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_vertical = 3
+wrap_mode = 1
+script = ExtResource("1_pdvue")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SaveExitButton" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save and Exit"
+
+[node name="VMarginContainer2" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="HMarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer2/ExitEraseButton" to="HBoxContainer/VBoxContainer/TextEdit" method="_on_exit_erase_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer/SaveExitButton" to="HBoxContainer/VBoxContainer/TextEdit" method="_on_save_exit_button_pressed"]

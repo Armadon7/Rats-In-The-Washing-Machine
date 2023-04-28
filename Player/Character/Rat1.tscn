@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://b62ccy0var78s"]
+
+[ext_resource type="PackedScene" uid="uid://dal2ls44qm2xm" path="res://Assets/Rats/GreyRat.tscn" id="1_64b5u"]
+[ext_resource type="Script" path="res://Player/Character/PlayerControlScript.gd" id="1_v6pkq"]
+[ext_resource type="Script" path="res://TextPopUps/TextPopUpInstancer.gd" id="3_qar6k"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xiu70"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_07wok"]
+radius = 0.55
+height = 2.4
+
+[node name="Rat1" type="CharacterBody3D"]
+script = ExtResource("1_v6pkq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.58167, -0.430165)
+shape = SubResource("CapsuleShape3D_xiu70")
+
+[node name="GreyRatFromAssetsRats" parent="." instance=ExtResource("1_64b5u")]
+
+[node name="XXXXXRat1" type="Node3D" parent="."]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.66, -0.43)
+shape = SubResource("CapsuleShape3D_07wok")
+
+[node name="InstancerNode_TextPopUp" type="Node3D" parent="."]
+script = ExtResource("3_qar6k")
+
+[connection signal="body_entered" from="Area3D" to="InstancerNode_TextPopUp" method="_on_area_3d_body_entered"]

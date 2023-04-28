@@ -1,0 +1,68 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvpgpu36js244"]
+
+[ext_resource type="Script" path="res://Poetry/PoetryControllers/TextEditScript.gd" id="1_4cl1b"]
+
+[node name="PoetryWindow" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="VMarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ExitEraseButton" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Exit Erase All Changes"
+
+[node name="TextEdit" type="TextEdit" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_vertical = 3
+wrap_mode = 1
+script = ExtResource("1_4cl1b")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SaveExitButton" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save and Exit"
+
+[node name="VMarginContainer2" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="HMarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer2/ExitEraseButton" to="HBoxContainer/VBoxContainer/TextEdit" method="_on_exit_erase_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer/SaveExitButton" to="HBoxContainer/VBoxContainer/TextEdit" method="_on_save_exit_button_pressed"]

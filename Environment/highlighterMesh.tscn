@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bheo01d37g010"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eyri8"]
+blend_mode = 1
+albedo_color = Color(1, 0, 0.894118, 0.411765)
+
+[sub_resource type="BoxMesh" id="BoxMesh_adihp"]
+material = SubResource("StandardMaterial3D_eyri8")
+size = Vector3(2.317, 4.202, 2.359)
+
+[node name="HighlighterMesh" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_adihp")

@@ -1,0 +1,21 @@
+[gd_resource type="FontFile" format=3 uid="uid://du6l36k0jrwl3"]
+
+[resource]
+resource_name = "FontTest"
+face_index = null
+embolden = null
+transform = null
+cache/0/41/0/ascent = 0.0
+cache/0/41/0/descent = 0.0
+cache/0/41/0/underline_position = 0.0
+cache/0/41/0/underline_thickness = 0.0
+cache/0/41/0/scale = 1.0
+cache/0/41/0/kerning_overrides/41/0 = Vector2(0, 0)
+cache/0/41/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/41/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)

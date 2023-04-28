@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8cflpvjpst0a"]
+
+[ext_resource type="Script" path="res://Environment/HighlighterControllerScript.gd" id="1_nij3c"]
+
+[node name="HighlighterController" type="Node3D"]
+script = ExtResource("1_nij3c")

@@ -1,0 +1,91 @@
+[gd_scene load_steps=10 format=3 uid="uid://brl8kq3epoojx"]
+
+[ext_resource type="PackedScene" uid="uid://be83p6i6lq02b" path="res://Environment/FloorSolo.tscn" id="1_jxnsq"]
+[ext_resource type="PackedScene" uid="uid://bka2r8hbpaaag" path="res://Environment/WashingMachineSolo.tscn" id="2_cevkn"]
+[ext_resource type="PackedScene" uid="uid://b62ccy0var78s" path="res://Player/Character/Rat1.tscn" id="3_oypua"]
+[ext_resource type="Script" path="res://Poetry/PoetryControllers/PoetryDisplayerScript.gd" id="5_wm52r"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p4s86"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ppkwm"]
+sky_material = SubResource("ProceduralSkyMaterial_p4s86")
+
+[sub_resource type="Environment" id="Environment_pfx3k"]
+background_mode = 2
+sky = SubResource("Sky_ppkwm")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_duapj"]
+blend_mode = 1
+albedo_color = Color(1, 0, 0.894118, 0.411765)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7xfs5"]
+material = SubResource("StandardMaterial3D_duapj")
+size = Vector3(2.317, 4.202, 2.359)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pfx3k")
+
+[node name="HolderNode_StaticObjects" type="Node3D" parent="."]
+
+[node name="HolderNode_LeftMachines" type="Node3D" parent="HolderNode_StaticObjects"]
+
+[node name="WashingMachineSolo" parent="HolderNode_StaticObjects/HolderNode_LeftMachines" instance=ExtResource("2_cevkn")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.85361, 1.14275, 4.60049)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HolderNode_StaticObjects/HolderNode_LeftMachines/WashingMachineSolo"]
+visible = false
+mesh = SubResource("BoxMesh_7xfs5")
+
+[node name="WashingMachineSolo2" parent="HolderNode_StaticObjects/HolderNode_LeftMachines" instance=ExtResource("2_cevkn")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.381806, 1.14275, 4.60049)
+
+[node name="WashingMachineSolo3" parent="HolderNode_StaticObjects/HolderNode_LeftMachines" instance=ExtResource("2_cevkn")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.88411, 1.14275, 4.60049)
+
+[node name="WashingMachineSolo4" parent="HolderNode_StaticObjects/HolderNode_LeftMachines" instance=ExtResource("2_cevkn")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.27756, 1.14275, 4.60049)
+
+[node name="HolderNode_RightMachines2" type="Node3D" parent="HolderNode_StaticObjects"]
+
+[node name="WashingMachineSolo" parent="HolderNode_StaticObjects/HolderNode_RightMachines2" instance=ExtResource("2_cevkn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.30737, 1.14275, -4.53303)
+
+[node name="WashingMachineSolo2" parent="HolderNode_StaticObjects/HolderNode_RightMachines2" instance=ExtResource("2_cevkn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84202, 1.14275, -4.71166)
+
+[node name="WashingMachineSolo3" parent="HolderNode_StaticObjects/HolderNode_RightMachines2" instance=ExtResource("2_cevkn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.417975, 1.14275, -4.8754)
+
+[node name="WashingMachineSolo4" parent="HolderNode_StaticObjects/HolderNode_RightMachines2" instance=ExtResource("2_cevkn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.80516, 1.14275, -5.04836)
+
+[node name="FloorSolo" parent="HolderNode_StaticObjects" instance=ExtResource("1_jxnsq")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="HolderNode_Player" type="Node3D" parent="."]
+
+[node name="Rat1" parent="HolderNode_Player" instance=ExtResource("3_oypua")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.54938, -0.366331, 0.750988, 0.00866881, 0.901221, 0.433273, -0.835528, -0.231521, 0.498288, 7.97627, 6, 3.98654)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 24, 0)
+light_color = Color(0.858824, 0.796078, 0.662745, 1)
+light_energy = 6.333
+
+[node name="MenuController" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_wm52r")
